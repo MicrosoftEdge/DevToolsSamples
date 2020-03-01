@@ -1,0 +1,19 @@
+{
+  "name": "3D View (Prototype)",
+  "description" : "Sample code of a prototype from Edge DevToold 3D View. ",
+  "version": "0.1",
+  "manifest_version": 2,
+  "devtools_page": "devtools.html",
+  "icons": {
+    "16": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["src/content.js"]
+    }
+  ],
+  "permissions": ["activeTab", "<all_urls>"]
+}
