@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Babylon.js -->
+    <script src="src/babylon.js"></script>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .viewer{
+            display: flex;
+        }
+
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        #message {
+            position: absolute;
+            padding-top: 50px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: #dedede;
+            top: 0;
+            left: 0;
+            font-size: 20px;
+            background-color: #d2d6da;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewer">
+        <canvas id="renderCanvas"></canvas>
+    </div>
+
+    <div id="message">
+        3D View </br>
+        </br>
+        This is an example of a very early prototype for the Edge DevTools 3D View. </br>
+        </br>
+        Please refresh the page!
+    </div>
+    <script src='src/scene.js'></script>
+</body>
+
+</html>

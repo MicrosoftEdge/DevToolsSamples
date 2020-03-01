@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>3D View benchmarks</title>
+    </head>
+    <body>
+        <div>This website creates multiple stacks of nested elements with random sizes and colors.</div>
+        <div id="message"></div>
+        <script>
+            let body = document.getElementsByTagName('body')[0];
+            let message = document.getElementById('message');
+            let stackCount = 25;
+            let totalElements = 0;
+
+            for(let i=0; i<stackCount; i++) {
+                let childrenForThisStack = 50 + Math.random() * 100;
+                let hueForThisStack = Math.random() * 360;
+
+                let stack = document.createElement('div');
+                stack.style.position = 'absolute';
+                stack.style.top = 100 + (Math.random() * (window.innerHeight - 100));
+                stack.style.left = Math.random() * (window.innerWidth - 100);
+                stack.style.backgroundColor = `hsl(${hueForThisStack}, 50%, 50%)`;
+
+                let lastChild = stack;
+                for(let i=0; i<childrenForThisStack; i++) {
+                    let child = createChildren(i, childrenForThisStack, hueForThisStack);
+                    lastChild.appendChild(child);
+                    lastChild = child;
+                    totalElements += 1;
+                }
+                
+                body.appendChild(stack);
+            }
+
+            message.innerHTML = `Stacks: ${stackCount} <br\> Total elements: ${totalElements + stackCount}`;
+
+            function createChildren(index, total, startingHue){
+                let child = document.createElement('div');
+                child.style.position = 'absolute';
+                child.style.top = 0;
+                child.style.left = 0;
+
+                child.style.width = 5 + Math.random() * 150;
+                child.style.height = 5 + Math.random() * 100;
+                let hue = startingHue + (360 / total) * index;
+                child.style.backgroundColor = `hsl(${hue}, 50%, 50%)`;
+                return child;
+            }
+
+        </script>
+    </body>
+</html>
