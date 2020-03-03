@@ -7,6 +7,10 @@ You can learn more about the real feature with this [explainer](https://docs.goo
 
 
 # Setup
+### Get the code
+1) Clone this repo
+2) Get the latest version of Babylon.js from https://cdn.babylonjs.com/babylon.js. Copy that file and paste into `/browser_extension/src/babylon.js`
+
 ### Install the extension
 1) Open Edge browser
 2) Navigate to `edge://extensions`
