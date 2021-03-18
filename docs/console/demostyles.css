@@ -23,3 +23,11 @@ script::before {
   content: 'Source Code';
   color:lime;
 }
+table {
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+td,th {
+  padding: 2px 5px;
+  border: 1px solid #fff;
+}  
