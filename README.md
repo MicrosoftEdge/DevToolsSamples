@@ -1,7 +1,8 @@
+⚠️ **THIS REPOSITORY IS NOT MAINTAINED ANYMORE AND ALL DEMOS HAVE MOVED TO [THE DEMOS REPOSITORY](https://github.com/MicrosoftEdge/Demos)** ⚠️
+
 # Microsoft Edge DevTools Samples
 
 A collection of samples for Edge Developer Tools.
-
 
 ## Contributing
 
