@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clipboard Demo</title>
+  </head>
+  <body>
+    <h1>
+      Clipboard API
+    </h1>
+
+    <p>
+      More details can be found in the
+      <a
+        href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows"
+        >browsers devtools console</a
+      >
+    </p>
+
+    <button onclick="copyText()">
+      Copy Text / URLs
+    </button>
+
+    <button onclick="copyFile()">
+      Copy a File
+    </button>
+    
+    <p id="status-message"></p>
+
+    <script>
+      async function copyText() {
+        try {
+          await navigator.clipboard.writeText('Copying text!');
+          console.log('Text copied to clipboard');
+          
+          document.querySelector("#status-message").textContent = "Text copied to clipboard";
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
+      }
+
+      async function copyFile() {
+        const test_file = new File(["some text..."], "filename.txt", {type: "text/plain"});
+        
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              [test_file.type]: test_file
+            })
+          ]);
+          console.log('Image copied.');
+          
+          document.querySelector("#status-message").textContent = "Image copied to clipboard";
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
+      }
+    </script>
+  </body>
+</html>

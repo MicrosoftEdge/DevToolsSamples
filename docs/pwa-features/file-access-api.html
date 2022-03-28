@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>File Access API Demo</title>
+  </head>
+  <body>
+    <h1>
+      File Access API
+    </h1>
+
+    <p>
+      More details can be found in the
+      <a
+        href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows"
+        >browsers devtools console</a
+      >
+    </p>
+
+    <button onclick="chooseFile()">
+      Open File
+    </button>
+
+    <button onclick="saveFile()">
+      Save File
+    </button>
+
+    <script>
+      let file;
+      
+      async function chooseFile() {
+        const fileHandles = await window.showOpenFilePicker({
+          startIn: "pictures"
+        });
+        file = await fileHandles[0].getFile();
+
+        if (file) {
+          console.log(file);
+
+          const img = new Image();
+          img.src = URL.createObjectURL(file);
+
+          document.body.append(img);
+        }
+      }
+
+      async function saveFile() {
+        const options = {
+          types: [
+            {
+              description: "Image Files",
+              accept: {
+                "image/png": [".png"]
+              }
+            }
+          ]
+        };
+        const handle = await window.showSaveFilePicker(options);
+        
+        const writable = await handle.createWritable();
+        await writable.write(file);
+        await writable.close();
+      }
+    </script>
+  </body>
+</html>
